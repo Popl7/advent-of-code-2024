@@ -1,11 +1,15 @@
-import {readLines} from 'https://deno.land/std/io/mod.ts';
+import { TextLineStream } from "@std/text-line-stream";
 
 const getMinMax = async (filename: string) => {
-    const file = await Deno.open(`day1/${filename}.txt`)
+    using f = await Deno.open(`day1/${filename}.txt`)
+
+    const readable = f.readable
+    .pipeThrough(new TextDecoderStream())
+    .pipeThrough(new TextLineStream());
 
     const mins: number[] = []
     const maxs: number[] = [];
-    for await(const line of readLines(file)) {
+    for await(const line of readable) {
       const [min, max] = line.split(/\s+/).map(Number);
       mins.push(min);
       maxs.push(max);

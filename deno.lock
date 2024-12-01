@@ -1,5 +1,17 @@
 {
   "version": "4",
+  "specifiers": {
+    "jsr:@std/json@0.223.0": "0.223.0",
+    "jsr:@std/streams@0.223.0": "0.223.0"
+  },
+  "jsr": {
+    "@std/json@0.223.0": {
+      "integrity": "9a4a255931dd0397924c6b10bb6a72fe3e28ddd876b981ada2e3b8dd0764163f"
+    },
+    "@std/streams@0.223.0": {
+      "integrity": "d6b28e498ced3960b04dc5d251f2dcfc1df244b5ec5a48dc23a8f9b490be3b99"
+    }
+  },
   "redirects": {
     "https://deno.land/std/io/mod.ts": "https://deno.land/std@0.224.0/io/mod.ts"
   },
@@ -38,7 +50,7 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@std/assert@1"
+      "jsr:@std/streams@0.223.0"
     ]
   }
 }
