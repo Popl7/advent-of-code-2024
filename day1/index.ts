@@ -15,7 +15,7 @@ const getMinMax = async (filename: string) => {
     return {mins, maxs};
 }
 
-export const day1 = async () => {
+export const main = async () => {
   const {mins, maxs} = await getMinMax('input')
 
   console.warn(`day 1 start`);
