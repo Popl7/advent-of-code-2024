@@ -1,3 +1,3 @@
-import { main } from "./day2/index.ts";
+import { main } from "./infi/index.ts";
 
 main();
