@@ -8,14 +8,12 @@ const calcMul = (item: string) => {
 };
 
 const getMuls = async (filename: string) => {
-  const items: string[] = [];
   using f = await Deno.open(`day3/${filename}.txt`)
-  const readable = f.readable
-  .pipeThrough(new TextDecoderStream());
+  const readable = f.readable.pipeThrough(new TextDecoderStream());
 
+  const items: string[] = [];
   for await (const line of readable) {
-    const matches = line.matchAll(/mul\([0-9]{1,3},[0-9]{1,3}\)/g);
-    matches.forEach((match) => {
+    line.matchAll(/mul\([0-9]{1,3},[0-9]{1,3}\)/g).forEach((match) => {
       items.push(match[0]);
     })
   }
@@ -23,19 +21,14 @@ const getMuls = async (filename: string) => {
 }
 
 const getMuls2 = async (filename: string) => {
-  const items: string[] = [];
   using f = await Deno.open(`day3/${filename}.txt`)
-  const readable = f.readable
-  .pipeThrough(new TextDecoderStream());
+  const readable = f.readable.pipeThrough(new TextDecoderStream());
 
+  const items: string[] = [];
   for await (const line of readable) {
-    const parts = line.split(/do\(\)/);
-
-    parts.forEach((part) => {
+    line.split(/do\(\)/).forEach((part) => {
       const enabledParts = part.split(/don't\(\)/);
-      const enabledPart = enabledParts[0]
-      const matches = enabledPart.matchAll(/mul\([0-9]{1,3},[0-9]{1,3}\)/g);
-      matches.forEach((match) => {
+      enabledParts[0].matchAll(/mul\([0-9]{1,3},[0-9]{1,3}\)/g).forEach((match) => {
         items.push(match[0]);
       })
     });
